@@ -1,11 +1,9 @@
 #Import libraries and packages needed for app.py
 
-from flask import Flask, jsonify, render_template
-#import sqlalchemy as sql
-#import json
-#import numpy as np
-#import pandas as pd
-##import datetime as dt 
+from flask import Flask, jsonify, #render_template
+from flask import Flask
+import sqlite3
+import json
 
 #from sqlalchemy.ext.automap import automap_base
 #from sqlalchemy.orm import Session
@@ -16,9 +14,55 @@ from flask import Flask, jsonify, render_template
 
 app=Flask(__name__)
 
-#engine=sql.create_engine('sqlite:///data/covid.db')
+#Set up the engine and base to run
+engine=sql.create_engine('sqlite:///data/covid.db')
+Base = automap_base()
+Base.prepare(engine, reflect=True)
 
+@app.route('/')
+def index():
+    conn = sqlite3.connect('C:\WAUS-VIRT-DATA-PT-03-2023-U-LOLC\Project 3\covid.db')
+    # Perform further operations with the connection
+    # ...
+    conn.close()  # Close the connection when done
+    return 'Imported SQLite file into Flask'
+@app.route('/')
+def index():
+    conn = sqlite3.connect('C:\WAUS-VIRT-DATA-PT-03-2023-U-LOLC\Project 3\covid.db')
+    cursor = conn.cursor()
+    cursor.execute('SELECT * FROM covid')  # actual table name
+    rows = cursor.fetchall()
+    conn.close()
+    return jsonify(rows)
 
+@app.route('/')
+def index():
+    conn = sqlite3.connect('C:\WAUS-VIRT-DATA-PT-03-2023-U-LOLC\Project 3\covid.db')
+    cursor = conn.cursor()
+    cursor.execute('SELECT * FROM covid')
+    rows = cursor.fetchall()
+    conn.close()
+
+    # Convert to JSON
+    data = jsonify(rows).json
+
+    # Save JSON to a file
+    with open('C:\WAUS-VIRT-DATA-PT-03-2023-U-LOLC\Project 3.json', 'w') as file:
+        json.dump(data, file)
+
+    return 'JSON file created'
+
+@app.route('/covid19')
+def get_coviddata():
+    conn = sqlite3.connect('C:\WAUS-VIRT-DATA-PT-03-2023-U-LOLC\Project 3\covid.db')
+    cursor = conn.cursor()
+    cursor.execute('SELECT * FROM covid19')
+    users = cursor.fetchall()
+    conn.close()
+    return str(users)  # Return the fetched data as a string
+
+if __name__ == '__main__':
+    app.run()
 
 #app = Flask(__name__)
 #@app.route("/jsonified")
