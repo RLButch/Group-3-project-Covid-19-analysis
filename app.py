@@ -1,5 +1,5 @@
 #Import libraries and packages needed for app.py
-from flask import Flask, jsonify
+from flask import Flask, render_template, jsonify
 from sqlalchemy import Column, Integer, String, Float
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.orm import sessionmaker
@@ -19,12 +19,11 @@ Base.metadata.bind = engine
 DBSession = sessionmaker(bind=engine)
 session = DBSession()
 app = Flask(__name__)
+
 @app.route("/")
-def welcome():
-    return (
-        f"Available Routes:<br/>"
-        f"/api/covid<br/>"
-    )
+def home():
+    return render_template('index.html')
+    
 @app.route("/api/covid")
 def covid():
     results = session.query(Data).all()
