@@ -1,67 +1,49 @@
 #Import libraries and packages needed for app.py
-
-from flask import Flask, jsonify, render_template
-import sqlite3
-import json
-import numpy as np
+from flask import Flask, jsonify
 from sqlalchemy import Column, Integer, String, Float
 from sqlalchemy.ext.declarative import declarative_base
+from sqlalchemy.orm import sessionmaker
+from sqlalchemy import create_engine
 Base = declarative_base()
-
-from sqlalchemy.ext.automap import automap_base
-from sqlalchemy.orm import Session
-from sqlalchemy import create_engine, func
-#from sqlalchemy.sql.functions import session_user
-#from sqlalchemy.sql.selectable import subquery
-
-
-engine = create_engine('sqlite:///covid.db')
-
-# reflect the tables
-#Base.prepare(autoload_with=engine)
-# Create a Data Class for the table. 
 class Data(Base):
     __tablename__ = 'data'
-    Country = Column(String(512),primary_key=True)
+    Country = Column(String(512), primary_key=True)
     New_cases = Column(Integer)
     Cumulative_cases = Column(Integer)
     New_deaths = Column(Integer)
     Cumulative_deaths = Column(Integer)
     Latitude = Column(Float)
     Longitude = Column(Float)
-
-# Save reference to the table
-#covid = Base.classes.data
-
-#################################################
-# Flask Setup
-#################################################
+engine = create_engine('sqlite:///covid.db')
+Base.metadata.bind = engine
+DBSession = sessionmaker(bind=engine)
+session = DBSession()
 app = Flask(__name__)
-
 @app.route("/")
 def welcome():
-    """List all available api routes."""
     return (
         f"Available Routes:<br/>"
         f"/api/covid<br/>"
-        
     )
-
 @app.route("/api/covid")
 def covid():
-    # Create our session (link) from Python to the DB
-    session = Session(engine)
-
-    """Return a list of all covid data"""
-    # Query all passengers
-    results = session.query(covid.name).all()
-
+    results = session.query(Data).all()
     session.close()
-
-    # Convert list of tuples into normal list
-    allcovid = list(np.ravel(results))
-
-    return jsonify(allcovid)
+    all_covid_data = []
+    for result in results:
+        data = {
+            "Country": result.Country,
+            "New_cases": result.New_cases,
+            "Cumulative_cases": result.Cumulative_cases,
+            "New_deaths": result.New_deaths,
+            "Cumulative_deaths": result.Cumulative_deaths,
+            "Latitude": result.Latitude,
+            "Longitude": result.Longitude
+        }
+        all_covid_data.append(data)
+    return jsonify(all_covid_data)
+if __name__ == '__main__':
+    app.run()
 
 # @app.route('/')
 # def index():
@@ -98,8 +80,8 @@ def covid():
 #     conn.close()
 #     return str(users)  # Return the fetched data as a string
 
-if __name__ == '__main__':
-    app.run()
+# if __name__ == '__main__':
+#     app.run()
 
 #app = Flask(__name__)
 #@app.route("/jsonified")
