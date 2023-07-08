@@ -1,4 +1,6 @@
 Covid 19 Dashboard
+
+
 ![image](https://github.com/RLButch/Group-3-project-Covid-19-analysis/assets/122842203/f1cc3cf8-16e4-45d8-aa1d-d8b8dc73bb12)
 
 On March 11 2020 the World Health Organisation (WHO) declared the novel coronavirus (COVID-19) a worldwide pandemic. This pandemic declaration for COVID-19 is still active.
