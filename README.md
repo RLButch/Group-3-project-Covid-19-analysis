@@ -18,18 +18,17 @@ D3
 Implementation process:
 1). WHO-COVID-19-global-data.csv was read into Covid-19ETL.ipynb
   * Data cleaning was performed and unused columns dropped
-  * Data was grouped by Country
-  * Cleaned data was loaded into an SQL Database
+  * Data was grouped by Country and cases, lat and long columns added
+  * Cleaned data was loaded into an SQLite Database
 2). app.py
     * a flask app was developed with the following endpoints:
     * / - landing page with rendered index html
-    * /data - returns the Covid19 data into a json format
-    *  ? - returns data in a GEOjson format
+    * /data - returns the Covid19 data into a json format and returns data in a GEOjson format
 3). index.html - accesses all the libraries being used in the dashboard and displays the page contents
 4). logic.js
     * leaflet to draw a map of the world and hold the cases and deaths data
     * hover over to identify the number of cases and deaths per country
-    * drop down menu to select on either cases or deaths  - to then display the hover over on each country
+    * drop down menu to select on either cases or deaths 
     * plotly to develop a bar chart of new cases, cumulative cases, new deaths and cumulative deaths
 5). style.css - applying style to the html page contents
 
