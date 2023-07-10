@@ -43,6 +43,6 @@ Implementation process:
 5). style.css - applying style to the html page contents
 
 Group members:
-Anuja Yadwadkar
+Anuja 
 Bec Ngooi
 Rebecca Butcher
