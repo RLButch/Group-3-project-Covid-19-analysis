@@ -5,8 +5,7 @@ Covid 19 Dashboard
 
 On March 11 2020 the World Health Organisation (WHO) declared the novel coronavirus (COVID-19) a worldwide pandemic. This pandemic declaration for COVID-19 is still active.
 
-The project's primary goal is to analyse COVID-19  data and gain insights into the new and cumulative cases and deaths around the world. Which countries are still hotspots for COVID-19 and which countries
-have gotten the disease under control. 
+The project's primary goal is to analyse COVID-19  data and gain insights into the new and cumulative cases and deaths around the world. Which countries are hotspots for COVID-19 - identifying the top ten countries by cases and deaths.
 
 Globally, as of 5:56pm CEST, 28 June 2023, there have been 767,518,723 confirmed cases of COVID-19, including 6,947,192 deaths, reported to WHO (source:WHO).
 
