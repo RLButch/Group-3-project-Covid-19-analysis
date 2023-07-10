@@ -1,10 +1,12 @@
 Covid 19 Dashboard
+
+
 ![image](https://github.com/RLButch/Group-3-project-Covid-19-analysis/assets/122842203/f1cc3cf8-16e4-45d8-aa1d-d8b8dc73bb12)
 
 On March 11 2020 the World Health Organisation (WHO) declared the novel coronavirus (COVID-19) a worldwide pandemic. This pandemic declaration for COVID-19 is still active.
 
 The project's primary goal is to analyse COVID-19  data and gain insights into the new and cumulative cases and deaths around the world. Which countries are still hotspots for COVID-19 and which countries
-have gotten the disease under control.
+have gotten the disease under control. 
 
 Globally, as of 5:56pm CEST, 28 June 2023, there have been 767,518,723 confirmed cases of COVID-19, including 6,947,192 deaths, reported to WHO (source:WHO).
 
@@ -19,7 +21,7 @@ JavaScript
 D3
 
 A global covid 19 dataset was downloaded from https://covid19.who.int/data, it includes data from 1 January 2020 to 28 June 2023
-There was a total of 766339879 new cases, 405251721844 cumulative cases, new deaths 6 939 172 and 5196529330 Cumulative deaths
+There was a total of 766339879 new cases, 405251721844 cumulative cases, new deaths 6 939 172 and 5196529330 Cumulative deaths. Due to the recent trend of countries conducting data reconciliation exercises which remove large numbers of cases or deaths from their total counts, such data may reflect as negative numbers in the new cases / new deaths counts as appropriate. WHO designed the dataset this way so that the user will be able to identify when such adjustments occur. 
 
 Implementation process:
 
