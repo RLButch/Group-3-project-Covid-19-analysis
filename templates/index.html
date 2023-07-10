@@ -5,7 +5,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>Covid 19 global WHO data</title>
+  <title>COVID Visualisation</title>
 
   <!-- Leaflet CSS -->
   <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
@@ -13,31 +13,56 @@
     crossorigin="" />
 
   <!-- Our CSS -->
-  <link rel="stylesheet" type="text/css" href="../static/css/style.css">
+  <link rel="stylesheet" type="text/css" href="static/css/style.css">
+
+    <!-- Leaflet JS -->
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+     integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo="
+    crossorigin=""></script>
+  <!-- D3 JavaScript -->
+  <script src="https://d3js.org/d3.v7.min.js"></script>
+
 </head>
 
 <body>
 
-  <!-- The div that holds our map -->
-  <div id="map"></div>
+  <!-- Container for map and dropdown -->
+  <div class="container">
 
-  <!--The div that holds our bar chart-->
-  <div class="col-md-5">
-    <div id="bar"></div>
+    <!-- Div for title  -->
+    <div id="title-container">
+      <div class="col-md-12 jumbotron text-center">
+        <h1>COVID Dashboard</h1>
+      </div>
+    </div>
+
+    <!-- Content container -->
+    <div id="content-container">
+
+      <!-- The div that holds our map -->
+      <div id="map"></div>
+
+      <!-- Dropdown -->
+      <div id="dropdown-container">
+        <h5>Selection:</h5>
+        <select id="dropdown" onchange="optionChanged(this.value)">
+          <option value="Cases">Cases</option>
+          <option value="Deaths">Deaths</option>
+        </select>
+      </div>
+
+    </div>
+
+    <!-- Bar container -->
+    <div id="bar-container">
+      <div id="chart-container"></div>
+    </div>
+
   </div>
-  <!-- Dropdown
-  <div id="dropdown"></div>
-    <h5>Covid Dropdown:</h5>
-    <select id="selDataset" onchange="optionChanged(this.value)"></select>
-  </div> -->
   
-  <!-- D3 JavaScript -->
-  <script src="https://d3js.org/d3.v7.min.js"></script>
   <!-- Our JavaScript -->
-  <script type="text/javascript" src="../static/js/logic.js"></script>
-    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
- 
-  
+  <script type="text/javascript" src="static/js/logic.js"></script>
+  <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
 
 </body>
 

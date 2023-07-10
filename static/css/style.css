@@ -1,16 +1,42 @@
-body {
-  padding: 0;
-  margin: 0;
+body, html {
+  height: 110%;
+  margin: 5;
 }
 
-#map,
-body,
-html {
+.container {
+  display: flex;
+  flex-direction: column;
   height: 100%;
 }
 
+#title-container {
+  padding: 2px;
+  text-align: center;
+}
+
+#content-container {
+  flex: 1;
+  display: flex;
+}
+
+#map {
+  flex: 20;
+  width: 60%;
+}
+
+#chart-container {
+  flex: 1;
+  padding: 5px;
+  height: 400px
+}
+
+#dropdown-container {
+  flex: 1;
+  padding: 10px;
+}
+
 .info {
-  padding: 1px 10px;
+  padding: 10px;
   background: #fefffe;
   border-radius: 5px;
 }
