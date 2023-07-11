@@ -12,7 +12,7 @@ Globally, as of 5:56pm CEST, 28 June 2023, there have been 767,518,723 confirmed
 
 This project was developed with the use of:
 Python
-SQLite
+SQL
 Flask
 HTML
 CSS
@@ -32,7 +32,7 @@ Implementation process:
     * a flask app was developed with the following endpoints:
     * / - landing page with rendered index html
     * /data - returns the Covid19 data into a json format
-    *  ? - returns data in a GEOjson format
+    *  SQL data was uploaded into flask and then returned in a GEOjson format
 3). index.html - accesses all the libraries being used in the dashboard and displays the page contents
 4). logic.js
     * leaflet to draw a map of the world and hold the cases and deaths data
